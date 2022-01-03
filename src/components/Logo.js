@@ -13,7 +13,7 @@ const StyledLogo = styled(Logo)`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: var(--gunmetal);
+  background-color: var(--clr-gunmetal);
   border: 1px solid var(--clr-milk-white);
   color: var(--clr-milk-white);
   font-family: var(--fnt-regular);
