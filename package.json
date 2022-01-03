@@ -10,6 +10,7 @@
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-scripts": "5.0.0",
+    "styled-components": "^5.3.3",
     "web-vitals": "^2.1.2"
   },
   "scripts": {
@@ -38,7 +39,6 @@
   },
   "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
   "main": "index.js",
-  "devDependencies": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ec-rilo/photo-tagging-app.git"
@@ -48,5 +48,8 @@
   "bugs": {
     "url": "https://github.com/ec-rilo/photo-tagging-app/issues"
   },
-  "homepage": "https://github.com/ec-rilo/photo-tagging-app#readme"
+  "homepage": "https://github.com/ec-rilo/photo-tagging-app#readme",
+  "devDependencies": {
+    "babel-plugin-styled-components": "^2.0.2"
+  }
 }
