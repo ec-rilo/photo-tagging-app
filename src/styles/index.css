@@ -1,0 +1,7 @@
+:root {
+  --gunmetal-clr: #292f36;
+}
+
+body {
+  background-color: var(--gunmetal-clr);
+}
