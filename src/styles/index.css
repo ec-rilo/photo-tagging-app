@@ -3,13 +3,23 @@
   src: url('../assets/fonts/Roboto/Roboto-Regular.ttf');
 }
 
+@font-face {
+  font-family: 'Roboto-Bold';
+  src: url('../assets/fonts/Roboto/Roboto-Bold.ttf');
+}
+
 :root {
   /* Colors */
   --clr-gunmetal: #292f36;
   --clr-milk-white: #fffcff;
+  --clr-milk-white-dim: rgba(255, 252, 255, 0.5);
+  --clr-medium-turquoise: #3cc8ff;
+  --clr-vista-blue: #8ddca4;
+  --clr-lavender-rose: #fb98f8;
 
   /* Fonts */
   --fnt-regular: 'Roboto-Regular';
+  --fnt-bold: 'Roboto-Bold';
 }
 
 body {
