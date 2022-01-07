@@ -27,7 +27,18 @@ const StyledWelcomeContainer = styled(WelcomeContainer)`
   color: var(--clr-milk-white);
   font-family: var(--fnt-regular);
   font-size: 1rem;
-  margin-top: 50px;
+  opacity: 1;
+  pointer-events: auto;
+  transition: opactiy 0.3s;
+
+  ${({ playBtn }) => {
+    if (!playBtn.isActive) {
+      return `
+      opacity: 0;
+      pointer-events: none;  
+    `;
+    }
+  }}
 `;
 
 export default StyledWelcomeContainer;
