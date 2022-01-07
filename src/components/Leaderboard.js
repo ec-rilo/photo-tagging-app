@@ -173,10 +173,10 @@ const CloseBtn = styled.button`
   }
 `;
 
-const CloseBtnContainer = ({ className }) => {
+const CloseBtnContainer = ({ className, homepage }) => {
   return (
     <div className={className}>
-      <CloseBtn>Close</CloseBtn>
+      {homepage ? '' : <CloseBtn>Close</CloseBtn>}
     </div>
   );
 };
@@ -190,12 +190,12 @@ const StyledCloseBtnContainer = styled(CloseBtnContainer)`
   border-top: 1px solid var(--clr-cloud);
 `;
 
-const Leaderboard = ({ className }) => {
+const Leaderboard = ({ className, homepage }) => {
   return (
     <article className={className}>
       <StyledTitle />
       <StyledLeaderboardContentContainer />
-      <StyledCloseBtnContainer>Close</StyledCloseBtnContainer>
+      <StyledCloseBtnContainer homepage />
     </article>
   );
 };
