@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 const LeaderboardCell = styled.p`
   display: flex;
@@ -207,7 +207,25 @@ const StyledLeaderboard = styled(Leaderboard)`
   height: 500px;
   background-color: var(--clr-milk-white);
   border-radius: 10px;
-  margin: 50px auto;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s;
+
+  ${(props) =>
+    props.homepage &&
+    css`
+      position: absolute;
+      width: 100%;
+    `}
+
+  ${({ closeBtn }) => {
+    if (closeBtn.isActive) {
+      return `
+      opacity: 1;
+      pointer-events: auto;  
+    `;
+    }
+  }}
 `;
 
 export default StyledLeaderboard;
