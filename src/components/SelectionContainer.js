@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import styled, { keyframes, css } from 'styled-components';
 import device from '../assets/Data/DeviceSizes';
 
@@ -56,7 +56,7 @@ const StyledSelectionBtn = styled(SelectionBtn)`
   }}
 `;
 
-const SelectionContainer = ({ className }) => {
+const SelectionContainer = ({ className, toggleSelection }) => {
   const [btn1, setBtn1] = useState({ isActive: true });
   const [btn2, setBtn2] = useState({ isActive: false });
 
@@ -69,6 +69,10 @@ const SelectionContainer = ({ className }) => {
       setBtn2({ isActive: true });
     }
   };
+
+  useEffect(() => {
+    toggleSelection(btn1, btn2);
+  }, [btn1, btn2, toggleSelection]);
 
   return (
     <div className={className}>
