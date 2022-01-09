@@ -1,4 +1,5 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
+import { HomeContext } from '../Pages/HomeContext';
 import styled, { keyframes, css } from 'styled-components';
 import device from '../assets/Data/DeviceSizes';
 
@@ -23,9 +24,24 @@ const colorChangeDarkToLight = keyframes`
     }
 `;
 
-const SelectionBtn = ({ className, text, btnName, setActive, status }) => {
+const SelectionBtn = ({
+  className,
+  text,
+  btnName,
+  setActive,
+  status,
+  otherFunc,
+}) => {
   return (
-    <button className={className} onClick={() => setActive(btnName)}>
+    <button
+      className={className}
+      onClick={() => {
+        setActive(btnName);
+        if (otherFunc !== undefined) {
+          otherFunc(true);
+        }
+      }}
+    >
       <p>{text}</p>
     </button>
   );
@@ -57,6 +73,7 @@ const StyledSelectionBtn = styled(SelectionBtn)`
 `;
 
 const SelectionContainer = ({ className, toggleSelection }) => {
+  const { toggleLeaderboardVisible } = useContext(HomeContext);
   const [btn1, setBtn1] = useState({ isActive: true });
   const [btn2, setBtn2] = useState({ isActive: false });
 
@@ -87,6 +104,7 @@ const SelectionContainer = ({ className, toggleSelection }) => {
         btnName="btn2"
         setActive={setActive}
         status={btn2}
+        otherFunc={toggleLeaderboardVisible}
       />
     </div>
   );
