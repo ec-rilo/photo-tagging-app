@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import StyledLogo from './Logo';
 
 const MenuBtnDot = styled.div`
@@ -54,6 +54,14 @@ const StyledGameHeader = styled(GameHeader)`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  background-color: var(--clr-gunmetal);
+
+  ${(props) =>
+    props.gamepage &&
+    css`
+      position: sticky;
+      top: 0;
+    `};
 `;
 
 export default StyledGameHeader;
