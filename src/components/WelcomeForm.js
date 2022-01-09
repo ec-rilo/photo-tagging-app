@@ -201,10 +201,11 @@ const StyledPlayBtn = styled.button`
   transition: color 0.3s;
   font-family: var(--fnt-bold);
   font-size: 1rem;
+  pointer-events: none;
 
   ${({ inputObj }) => {
     if (inputObj.valid === true) {
-      return 'color: var(--clr-milk-white);';
+      return 'color: var(--clr-milk-white); pointer-events: auto;';
     }
   }};
 `;
