@@ -226,7 +226,6 @@ const StyledLeaderboard = styled(Leaderboard)`
     props.homepage &&
     css`
       position: absolute;
-      width: 100%;
     `}
 
   ${({ closeBtn }) => {
