@@ -1,5 +1,6 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import styled, { css } from 'styled-components';
+import { HomeContext } from '../Pages/HomeContext';
 
 const LeaderboardCell = styled.p`
   display: flex;
@@ -173,10 +174,11 @@ const CloseBtn = styled.button`
   }
 `;
 
-const CloseBtnContainer = ({ className, homepage }) => {
+const CloseBtnContainer = ({ className }) => {
+  const { toggleLeaderboardVisible } = useContext(HomeContext);
   return (
-    <div className={className}>
-      {homepage ? '' : <CloseBtn>Close</CloseBtn>}
+    <div className={className} onClick={() => toggleLeaderboardVisible(false)}>
+      <CloseBtn>Close</CloseBtn>
     </div>
   );
 };
@@ -190,12 +192,21 @@ const StyledCloseBtnContainer = styled(CloseBtnContainer)`
   border-top: 1px solid var(--clr-cloud);
 `;
 
-const Leaderboard = ({ className, homepage }) => {
+const Leaderboard = ({ className }) => {
+  const { leaderboardVisible } = useContext(HomeContext);
+
   return (
-    <article className={className}>
+    <article
+      className={className}
+      style={
+        leaderboardVisible === false
+          ? { opacity: '0', pointerEvents: 'none' }
+          : {}
+      }
+    >
       <StyledTitle />
       <StyledLeaderboardContentContainer />
-      <StyledCloseBtnContainer homepage />
+      <StyledCloseBtnContainer />
     </article>
   );
 };
