@@ -58,6 +58,12 @@ const StyledSelectionBtn = styled(SelectionBtn)`
   text-decoration: none;
   outline: none;
   font-family: var(--fnt-regular);
+  cursor: pointer;
+  font-size: 1rem;
+
+  @media ${device.mobileL} {
+    font-size: revert;
+  }
 
   ${(props) => {
     if (props.status.isActive) {
@@ -114,10 +120,21 @@ const StyledSelectionContainer = styled(SelectionContainer)`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin-top: 50px;
+  border: 1px solid var(--clr-milk-white);
+  max-width: 600px;
+  margin: 50px auto 0 auto;
+
+  height: 50px;
+
+  @media ${device.laptop} {
+    height: 40px;
+  }
+
+  @media ${device.mobileL} {
+    height: 35px;
+  }
 
   @media ${device.mobileS} {
-    border: 1px solid var(--clr-milk-white);
     height: 25px;
   }
 `;
