@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import styled from 'styled-components';
+import device from '../assets/Data/DeviceSizes';
 
 const StyledLabel = styled.label`
   position: absolute;
@@ -101,8 +102,12 @@ const StyledBorder = styled.div`
 
 const WelcomeNotif = styled.p`
   position: absolute;
-  font-size: 0.7rem;
+  font-size: 0.8rem;
   bottom: -20px;
+
+  @media ${device.tablet} {
+    font-size: 0.7rem;
+  }
 `;
 
 const InputSubContainer = (props) => {
@@ -205,7 +210,7 @@ const StyledPlayBtn = styled.button`
 
   ${({ inputObj }) => {
     if (inputObj.valid === true) {
-      return 'color: var(--clr-milk-white); pointer-events: auto;';
+      return 'color: var(--clr-milk-white); pointer-events: auto; cursor: pointer;';
     }
   }};
 `;
