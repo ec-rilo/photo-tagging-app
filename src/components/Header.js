@@ -1,6 +1,15 @@
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import device from '../assets/Data/DeviceSizes';
 import StyledLogo from './Logo';
+
+const HeaderText = styled.p`
+  font-size: 1.4rem;
+
+  @media ${device.mobileL} {
+    font-size: 1.2rem;
+  }
+`;
 
 const Header = ({ className }) => {
   return (
@@ -8,15 +17,11 @@ const Header = ({ className }) => {
       <Link to={'/'} style={{ textDecoration: 'none' }}>
         <StyledLogo />
       </Link>
-      <p>A Where's Waldo Clone</p>
+      <HeaderText>A Where's Waldo Clone</HeaderText>
       {/* style for mobile view*/}
     </header>
   );
 };
-
-// style the header
-
-// style the header for mobile view
 
 const StyledHeader = styled(Header)`
   margin-top: 50px;
