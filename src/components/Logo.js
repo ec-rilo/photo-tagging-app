@@ -17,6 +17,15 @@ const StyledLogo = styled(Logo)`
   border: 1px solid var(--clr-milk-white);
   color: var(--clr-milk-white);
   font-family: var(--fnt-regular);
+  width: 320px;
+  height: 80px;
+  font-size: 3rem;
+
+  @media ${device.mobileL} {
+    width: 290px;
+    height: 70px;
+    font-size: 2.8rem;
+  }
 
   @media ${device.mobileS} {
     width: 260px;
