@@ -6,13 +6,14 @@ const LeaderboardCell = styled.p`
   display: flex;
   align-items: center;
   padding-left: 20px;
-  font-size: 1rem;
+  font-size: 0.9rem;
   font-family: var(--fnt-regular);
   border-bottom: 1px solid var(--clr-cloud);
 `;
 
 const LeaderboardCategoryTitle = styled(LeaderboardCell)`
   font-family: var(--fnt-bold);
+  font-size: 0.9rem;
 `;
 
 const LeaderboardRank = styled(LeaderboardCategoryTitle)`
@@ -42,7 +43,7 @@ const LeaderboardContent = ({ className }) => {
   ]);
 
   const [nameItems, setNameItems] = useState([
-    'placeholder',
+    'Edgar Mckenzie Carri',
     'placeholder',
     'placeholder',
     'placeholder',
@@ -99,7 +100,7 @@ const LeaderboardContent = ({ className }) => {
 
 const StyledLeaderboardContent = styled(LeaderboardContent)`
   display: grid;
-  grid-template-columns: repeat(3, 250px);
+  grid-template-columns: repeat(3, 200px);
   grid-template-rows: repeat(11, 50px);
   grid-template-areas:
     'rank name time'
@@ -214,7 +215,8 @@ const Leaderboard = ({ className }) => {
 const StyledLeaderboard = styled(Leaderboard)`
   display: flex;
   flex-direction: column;
-  max-width: 300px;
+  max-width: 1000px;
+  width: 100%;
   height: 500px;
   background-color: var(--clr-milk-white);
   border-radius: 10px;
@@ -226,6 +228,10 @@ const StyledLeaderboard = styled(Leaderboard)`
     props.homepage &&
     css`
       position: absolute;
+      left: 0;
+      right: 0;
+      margin-left: auto;
+      margin-right: auto;
     `}
 
   ${({ closeBtn }) => {
