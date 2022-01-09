@@ -3,6 +3,7 @@ import StyledHeader from '../components/Header';
 import StyledLeaderboard from '../components/Leaderboard';
 import StyledSelectionContainer from '../components/SelectionContainer';
 import StyledWelcomeContainer from '../components/WelcomeContainer';
+import { HomeProvider } from './HomeContext';
 
 const Home = () => {
   const [playBtn, setPlayBtn] = useState({ isActive: true });
@@ -22,21 +23,23 @@ const Home = () => {
   );
 
   return (
-    <div style={{ margin: '0 20px' }}>
-      <StyledHeader />
-      <StyledSelectionContainer toggleSelection={toggleSelection} />
-      <div
-        style={{
-          marginTop: '50px',
-          position: 'relative',
-          display: 'flex',
-          justifyContent: 'center',
-        }}
-      >
-        <StyledWelcomeContainer playBtn={playBtn} />
-        <StyledLeaderboard homepage closeBtn={closeBtn} />
+    <HomeProvider>
+      <div style={{ margin: '0 20px' }}>
+        <StyledHeader />
+        <StyledSelectionContainer toggleSelection={toggleSelection} />
+        <div
+          style={{
+            marginTop: '50px',
+            position: 'relative',
+            display: 'flex',
+            justifyContent: 'center',
+          }}
+        >
+          <StyledWelcomeContainer playBtn={playBtn} />
+          <StyledLeaderboard homepage closeBtn={closeBtn} />
+        </div>
       </div>
-    </div>
+    </HomeProvider>
   );
 };
 
