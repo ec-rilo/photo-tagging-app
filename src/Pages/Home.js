@@ -5,6 +5,7 @@ import StyledHeader from '../components/Header';
 import StyledLeaderboard from '../components/Leaderboard';
 import StyledSelectionContainer from '../components/SelectionContainer';
 import StyledWelcomeContainer from '../components/WelcomeContainer';
+import Game from './Game';
 import { HomeProvider } from './HomeContext';
 
 const StyledContainer = styled.div`
@@ -37,7 +38,13 @@ const Home = () => {
 
   return (
     <HomeProvider>
-      <div style={{ margin: '0 20px' }}>
+      <div
+        style={{
+          margin: '0 auto',
+          padding: '0 20px',
+          maxWidth: '2000px',
+        }}
+      >
         <StyledHeader />
         <StyledSelectionContainer toggleSelection={toggleSelection} />
         <StyledContainer>
