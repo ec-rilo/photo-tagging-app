@@ -19,6 +19,8 @@
   --clr-cloud: #c4c4c4;
   --clr-cloud-light: rgba(196, 196, 196, 0.2);
   --clr-blueberry: #3c4caa;
+  --clr-davy-grey: #595959;
+  --clr-davy-grey-dim: rgba(89, 89, 89, 0.1);
 
   /* Fonts */
   --fnt-regular: 'Roboto-Regular';
