@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import styled, { css } from 'styled-components';
+import StyledInfoPanel from './InfoPanel';
 import StyledLogo from './Logo';
 
 const MenuBtnDot = styled.div`
@@ -40,22 +41,42 @@ const StyledMenuBtn = styled(MenuBtn)`
   height: 40px;
 `;
 
+const MenuContainer = () => {
+  return (
+    <div style={{ position: 'relative' }}>
+      <StyledMenuBtn />
+    </div>
+  );
+};
+
 const GameHeader = ({ className }) => {
   return (
     <header className={className}>
       <StyledLogo gamepage />
-      <StyledMenuBtn />
+      <MenuContainer />
     </header>
   );
 };
 
 const StyledGameHeader = styled(GameHeader)`
+  z-index: 9999;
   height: 70px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   background-color: var(--clr-gunmetal);
+`;
 
+const GameHeaderContainer = ({ className }) => {
+  return (
+    <div className={className}>
+      <StyledGameHeader />
+      <StyledInfoPanel />
+    </div>
+  );
+};
+
+const StyledGameHeaderContainer = styled(GameHeaderContainer)`
   ${(props) =>
     props.gamepage &&
     css`
@@ -64,4 +85,4 @@ const StyledGameHeader = styled(GameHeader)`
     `};
 `;
 
-export default StyledGameHeader;
+export default StyledGameHeaderContainer;
