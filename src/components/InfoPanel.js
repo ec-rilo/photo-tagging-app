@@ -177,7 +177,6 @@ const StyledInfoPanel = styled(InfoPanel)`
   right: 0;
   max-width: 350px;
   width: 100%;
-  height: 100vh;
   overflow-y: auto;
   background-color: var(--clr-milk-white);
   padding: 20px;
