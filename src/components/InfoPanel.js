@@ -2,7 +2,8 @@ import styled, { css } from 'styled-components';
 import closeBtnSrc from '../assets/images/icons/close-btn-icon.png';
 import clockSrc from '../assets/images/icons/clock-icon.png';
 import scoresSrc from '../assets/images/icons/scores-icon.png';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
+import { GameContext } from '../assets/context/GameContext';
 
 const DataImg = ({ className, src, alt }) => {
   return <img className={className} src={src} alt={alt} />;
@@ -53,8 +54,10 @@ const StyledCloseBtn = styled(CloseBtn)`
 `;
 
 const CloseBtnContainer = ({ className }) => {
+  const { toggleGameMenu } = useContext(GameContext);
+
   return (
-    <div className={className}>
+    <div className={className} onClick={() => toggleGameMenu()}>
       <StyledCloseBtn />
     </div>
   );
@@ -173,16 +176,28 @@ const InfoPanel = ({ className }) => {
 
 const StyledInfoPanel = styled(InfoPanel)`
   position: absolute;
-  top: initial;
   right: 0;
   max-width: 350px;
   width: 100%;
+  height: 100vh;
   overflow-y: auto;
   background-color: var(--clr-milk-white);
   padding: 20px;
   font-family: var(--fnt-regular);
   box-sizing: border-box;
   z-index: -1;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s;
+
+  ${({ gameMenu }) => {
+    if (gameMenu.isActive === true) {
+      return `
+      opacity: 1;
+      pointer-events: initial;
+    `;
+    }
+  }}
 `;
 
 export default StyledInfoPanel;
