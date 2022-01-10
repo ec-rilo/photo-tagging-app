@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useState, useContext, useEffect } from 'react';
+import { GameContext } from '../assets/context/GameContext';
 import styled, { css } from 'styled-components';
 import StyledInfoPanel from './InfoPanel';
 import StyledLogo from './Logo';
@@ -17,14 +18,25 @@ const MenuBtnDot = styled.div`
   }}
 `;
 
-const MenuBtn = ({ className }) => {
+const toggleActive = (isActive, setActive) => {
+  isActive === true ? setActive(false) : setActive(true);
+};
+
+const MenuBtn = ({ className, toggle, gameMenu }) => {
   const [active, setActive] = useState(true);
 
-  const toggleActive = () => {
-    active === true ? setActive(false) : setActive(true);
-  };
+  if (gameMenu.isActive === active) {
+    toggleActive(active, setActive);
+  }
+
   return (
-    <div className={className} onClick={() => toggleActive()}>
+    <div
+      className={className}
+      onClick={() => {
+        toggleActive(active, setActive);
+        toggle();
+      }}
+    >
       <MenuBtnDot active={active} />
       <MenuBtnDot active={active} />
       <MenuBtnDot active={active} />
@@ -39,12 +51,19 @@ const StyledMenuBtn = styled(MenuBtn)`
   gap: 5px;
   cursor: pointer;
   height: 40px;
+
+  ${({ gameMenu }) => {
+    if (gameMenu.isActive === true) {
+      return 'pointer-events: none;';
+    }
+  }}
 `;
 
 const MenuContainer = () => {
+  const { toggleGameMenu, gameMenu } = useContext(GameContext);
   return (
     <div style={{ position: 'relative' }}>
-      <StyledMenuBtn />
+      <StyledMenuBtn toggle={toggleGameMenu} gameMenu={gameMenu} />
     </div>
   );
 };
@@ -68,10 +87,12 @@ const StyledGameHeader = styled(GameHeader)`
 `;
 
 const GameHeaderContainer = ({ className }) => {
+  const { gameMenu } = useContext(GameContext);
+
   return (
     <div className={className}>
       <StyledGameHeader />
-      <StyledInfoPanel />
+      <StyledInfoPanel gameMenu={gameMenu} />
     </div>
   );
 };
