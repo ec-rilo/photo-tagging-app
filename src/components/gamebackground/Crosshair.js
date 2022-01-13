@@ -10,7 +10,7 @@ const CrosshairDot = styled.div`
 
 const Crosshair = ({ className }) => {
   return (
-    <div className={className}>
+    <div id="crosshair" className={className}>
       <CrosshairDot />
     </div>
   );
@@ -21,24 +21,15 @@ const StyledCrosshair = styled(Crosshair)`
   display: flex;
   align-items: center;
   justify-content: center;
-  opacity: 0;
+  opacity: 1;
   width: 100px;
   height: 100px;
   border-radius: 50%;
   border: 5px solid white;
   box-sizing: border-box;
   background-color: rgba(255, 0, 0, 0.1);
-  z-index: 1;
-
-  ${({ isVisible, left, top }) => {
-    if (isVisible) {
-      return `
-    opacity: 1;
-    top: ${top - 50}px;
-    left: ${left - 50}px;
-    `;
-    }
-  }}
+  z-index: 500;
+  cursor: auto;
 `;
 
 export default StyledCrosshair;
