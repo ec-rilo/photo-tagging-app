@@ -52,14 +52,6 @@ const ImgContainer = ({ className }) => {
   };
 
   const handleSelectionLocation = (ev) => {
-    console.log(
-      'parent Height: ',
-      ev.target.offsetParent.parentElement.offsetHeight
-    );
-    console.log('cursor: ', ev.nativeEvent.offsetY);
-
-    console.log('');
-
     if (ev.pageX < ev.target.offsetParent.parentElement.offsetWidth - 130) {
       setSelectionLocation('right');
     } else if (
@@ -94,11 +86,6 @@ const ImgContainer = ({ className }) => {
     <div
       className={className}
       onClick={(ev) => {
-        console.log(
-          'Container width: ',
-          ev.target.offsetParent.parentElement.offsetWidth
-        );
-        console.log(ev);
         if (
           ev.nativeEvent.path[0].id !== 'crosshair' &&
           ev.nativeEvent.path[1].id !== 'crosshair'
