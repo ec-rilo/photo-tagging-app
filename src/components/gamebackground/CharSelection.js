@@ -36,7 +36,35 @@ const StyledCharSelection = styled(CharSelection)`
   cursor: pointer;
   display: flex;
   flex-direction: column;
-  left: 110px;
+  width: 120px;
+
+  ${(props) => {
+    if (props.selectionLocation === 'right') {
+      return 'left: 110%;';
+    } else if (props.selectionLocation === 'left') {
+      return 'left: -130%';
+    } else if (props.selectionLocation === 'bottom left') {
+      return `
+        left: -130%;
+        top: 50%;
+      `;
+    } else if (props.selectionLocation === 'bottom right') {
+      return `
+        left: 110%;
+        top: 50%;
+      `;
+    } else if (props.selectionLocation === 'top right') {
+      return `
+        left: 110%;
+        top: -100%;
+      `;
+    } else if (props.selectionLocation === 'top left') {
+      return `
+        top: -100%;
+        left: -130%;
+      `;
+    }
+  }}
 `;
 
 export default StyledCharSelection;
