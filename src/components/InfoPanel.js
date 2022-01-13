@@ -25,11 +25,12 @@ const DataContainer = ({ className, src, alt, content }) => {
 };
 
 const StyledDataContainer = styled(DataContainer)`
-  height: 30px;
+  height: 50px;
   display: flex;
   align-items: center;
   font-family: var(--fnt-regular);
   gap: 60px;
+  padding-left: 20px;
 
   ${(props) =>
     props.selectable &&
@@ -51,6 +52,7 @@ const StyledCloseBtn = styled(CloseBtn)`
   height: 20px;
   object-fit: contain;
   cursor: pointer;
+  padding: 0 20px 0 0;
 `;
 
 const CloseBtnContainer = ({ className }) => {
@@ -90,6 +92,7 @@ const StyledCharacterDataContainer = styled(CharacterDataContainer)`
   align-items: center;
   height: 50px;
   cursor: pointer;
+  padding: 0 20px;
 
   &:hover {
     background-color: var(--clr-davy-grey-dim);
@@ -151,7 +154,6 @@ const InfoPanel = ({ className }) => {
             marginTop: '20px',
             display: 'flex',
             flexDirection: 'column',
-            gap: '30px',
           }}
         >
           <StyledDataContainer
@@ -167,7 +169,7 @@ const InfoPanel = ({ className }) => {
           />
         </div>
         <SeparationLine />
-        <p style={{ color: 'var(--clr-davy-grey)' }}>Find</p>
+        <p style={{ color: 'var(--clr-davy-grey)', padding: '0 20px' }}>Find</p>
         <StyledCharacterContainer />
       </div>
     </div>
@@ -182,7 +184,7 @@ const StyledInfoPanel = styled(InfoPanel)`
   height: 100vh;
   overflow-y: auto;
   background-color: var(--clr-milk-white);
-  padding: 20px;
+  padding-top: 20px;
   font-family: var(--fnt-regular);
   box-sizing: border-box;
   z-index: -1;
