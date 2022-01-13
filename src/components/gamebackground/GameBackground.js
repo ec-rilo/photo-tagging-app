@@ -2,7 +2,7 @@ import { useState } from 'react';
 import styled from 'styled-components';
 import device from '../../assets/Data/DeviceSizes';
 import imgSrc from '../../assets/images/backgrounds/the-loc-nar-level.jpg';
-import StyledCrosshair from './Crosshair';
+import StyledSelectionContainer from '../Selection';
 import cursorSrc from './crosshairs-2.png';
 
 const StyledImg = styled.img`
@@ -29,11 +29,17 @@ const ImgContainer = ({ className }) => {
     y: 0,
   });
   const [crosshairIsVisible, setCrosshairIsVisible] = useState(false);
+  const [clicked, setClicked] = useState(0);
+
+  const incrementClicked = () => {
+    const newClicked = clicked + 1;
+    setClicked(newClicked);
+  };
 
   const handleMouseMove = (ev) => {
     setMousePosition({
-      x: ev.nativeEvent.layerX,
-      y: ev.nativeEvent.layerY,
+      x: ev.nativeEvent.offsetX,
+      y: ev.nativeEvent.offsetY,
     });
   };
 
@@ -46,11 +52,19 @@ const ImgContainer = ({ className }) => {
     <div
       className={className}
       onClick={(ev) => {
-        handleMouseMove(ev);
-        toggleCrosshair();
+        if (
+          ev.nativeEvent.path[0].id !== 'crosshair' &&
+          ev.nativeEvent.path[1].id !== 'crosshair'
+        ) {
+          toggleCrosshair();
+          incrementClicked();
+        }
+        if (clicked % 2 === 0) {
+          handleMouseMove(ev);
+        }
       }}
     >
-      <StyledCrosshair
+      <StyledSelectionContainer
         isVisible={crosshairIsVisible}
         left={MousePosition.x}
         top={MousePosition.y}
