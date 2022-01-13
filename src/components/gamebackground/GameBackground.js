@@ -54,10 +54,6 @@ const ImgContainer = ({ className }) => {
         isVisible={crosshairIsVisible}
         left={MousePosition.x}
         top={MousePosition.y}
-        onClick={(ev) => {
-          handleMouseMove(ev);
-          toggleCrosshair();
-        }}
       />
       <StyledImg src={imgSrc} alt="The Loc Nar Level" />
     </div>
