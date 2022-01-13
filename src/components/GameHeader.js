@@ -98,6 +98,7 @@ const GameHeaderContainer = ({ className }) => {
 };
 
 const StyledGameHeaderContainer = styled(GameHeaderContainer)`
+  z-index: 9999;
   ${(props) =>
     props.gamepage &&
     css`
