@@ -31,6 +31,8 @@ const ImgContainer = ({ className }) => {
   const [crosshairIsVisible, setCrosshairIsVisible] = useState(false);
   const [clicked, setClicked] = useState(0);
 
+  const [selectionLocation, setSelectionLocation] = useState('right');
+
   const incrementClicked = () => {
     const newClicked = clicked + 1;
     setClicked(newClicked);
@@ -48,10 +50,55 @@ const ImgContainer = ({ className }) => {
       ? setCrosshairIsVisible(false)
       : setCrosshairIsVisible(true);
   };
+
+  const handleSelectionLocation = (ev) => {
+    console.log(
+      'parent Height: ',
+      ev.target.offsetParent.parentElement.offsetHeight
+    );
+    console.log('cursor: ', ev.nativeEvent.offsetY);
+
+    console.log('');
+
+    if (ev.pageX < ev.target.offsetParent.parentElement.offsetWidth - 130) {
+      setSelectionLocation('right');
+    } else if (
+      ev.pageX >
+      ev.target.offsetParent.parentElement.offsetWidth - 130
+    ) {
+      setSelectionLocation('left');
+    }
+
+    if (
+      ev.clientY < 120 &&
+      ev.pageX > ev.target.offsetParent.parentElement.offsetWidth - 130
+    ) {
+      setSelectionLocation('bottom left');
+    } else if (ev.clientY < 120 && ev) {
+      setSelectionLocation('bottom right');
+    } else if (
+      ev.nativeEvent.offsetY >
+        ev.target.offsetParent.parentElement.offsetHeight - 120 &&
+      ev.pageX > ev.target.offsetParent.parentElement.offsetWidth - 130
+    ) {
+      setSelectionLocation('top left');
+    } else if (
+      ev.nativeEvent.offsetY >
+      ev.target.offsetParent.parentElement.offsetHeight - 120
+    ) {
+      setSelectionLocation('top right');
+    }
+  };
+
   return (
     <div
       className={className}
       onClick={(ev) => {
+        console.log(
+          'Container width: ',
+          ev.target.offsetParent.parentElement.offsetWidth
+        );
+        console.log(ev);
         if (
           ev.nativeEvent.path[0].id !== 'crosshair' &&
           ev.nativeEvent.path[1].id !== 'crosshair'
@@ -59,8 +106,12 @@ const ImgContainer = ({ className }) => {
           toggleCrosshair();
           incrementClicked();
         }
+
         if (clicked % 2 === 0) {
           handleMouseMove(ev);
+          if (ev.nativeEvent.path[0].tagName === 'IMG') {
+            handleSelectionLocation(ev);
+          }
         }
       }}
     >
@@ -68,6 +119,7 @@ const ImgContainer = ({ className }) => {
         isVisible={crosshairIsVisible}
         left={MousePosition.x}
         top={MousePosition.y}
+        selectionLocation={selectionLocation}
       />
       <StyledImg src={imgSrc} alt="The Loc Nar Level" />
     </div>
