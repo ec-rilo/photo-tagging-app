@@ -2,11 +2,18 @@ import styled from 'styled-components';
 import StyledCharSelection from './gamebackground/CharSelection';
 import StyledCrosshair from './gamebackground/Crosshair';
 
-const SelectionContainer = ({ className, isVisible, left, top }) => {
+const SelectionContainer = ({
+  className,
+  isVisible,
+  left,
+  top,
+  selectionLocation,
+}) => {
   return (
     <div className={className}>
       <StyledCrosshair isVisible={isVisible} left={left} top={top} />
       <StyledCharSelection
+        selectionLocation={selectionLocation}
         name1={'Ryuk'}
         name2={'Patrick Star'}
         name3={'Kratos'}
@@ -22,9 +29,8 @@ const StyledSelectionContainer = styled(SelectionContainer)`
   position: absolute;
   opacity: 0;
   transition: opacity 200ms;
-  left: 100px;
-  background-color: red;
-  height: 0px;
+  height: 100px;
+  width: 100px;
 
   ${({ isVisible, left, top }) => {
     if (isVisible === true) {
