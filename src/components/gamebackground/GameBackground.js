@@ -33,7 +33,6 @@ const ImgContainer = ({ className }) => {
   const [coords, setCoords] = useState({ x: 0, y: 0 });
 
   const updateCoordinates = (newCoords) => {
-    console.log(newCoords);
     setCoords(newCoords);
   };
 
@@ -115,6 +114,7 @@ const ImgContainer = ({ className }) => {
         left={MousePosition.x}
         top={MousePosition.y}
         selectionLocation={selectionLocation}
+        coords={coords}
       />
       <StyledImg src={imgSrc} alt="The Loc Nar Level" />
     </div>

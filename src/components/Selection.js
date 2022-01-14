@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import styled from 'styled-components';
 import StyledCharSelection from './gamebackground/CharSelection';
 import StyledCrosshair from './gamebackground/Crosshair';
@@ -8,17 +9,25 @@ const SelectionContainer = ({
   left,
   top,
   selectionLocation,
+  coords,
 }) => {
+  const [characters, setCharacters] = useState([
+    { name: 'Bowser', isClicked: false },
+    { name: 'Kratos', isClicked: false },
+    { name: 'Patrick', isClicked: false },
+    { name: 'Ryuk', isClicked: false },
+    { name: 'Waldo', isClicked: false },
+  ]);
+
+  const [selectedChar, setSelectedChar] = useState('');
+
   return (
     <div className={className}>
       <StyledCrosshair isVisible={isVisible} left={left} top={top} />
       <StyledCharSelection
         selectionLocation={selectionLocation}
-        name1={'Ryuk'}
-        name2={'Patrick Star'}
-        name3={'Kratos'}
-        name4={'Bowser'}
-        name5={'Waldo'}
+        characters={characters}
+        setSelectedChar={setSelectedChar}
       />
     </div>
   );
