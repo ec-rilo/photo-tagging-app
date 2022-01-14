@@ -2,9 +2,9 @@ import styled from 'styled-components';
 
 const transitionTime = '250ms ease-in-out';
 
-const ListItem = ({ className, name }) => {
+const ListItem = ({ className, name, checkFound }) => {
   return (
-    <li className={className} onClick={() => console.log(name)}>
+    <li className={className} onClick={() => checkFound(name)}>
       {name}
     </li>
   );
@@ -26,11 +26,17 @@ const StyledListItem = styled(ListItem)`
   }
 `;
 
-const CharSelection = ({ className, characters, setSelectedChar }) => {
+const CharSelection = ({ className, characters, checkFound }) => {
   return (
     <ul className={className}>
       {characters.map((character, index) => {
-        return <StyledListItem key={index} name={character.name} />;
+        return (
+          <StyledListItem
+            key={index}
+            name={character.name}
+            checkFound={checkFound}
+          />
+        );
       })}
     </ul>
   );
