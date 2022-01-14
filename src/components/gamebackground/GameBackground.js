@@ -30,6 +30,13 @@ const ImgContainer = ({ className }) => {
 
   const [selectionLocation, setSelectionLocation] = useState('right');
 
+  const [coords, setCoords] = useState({ x: 0, y: 0 });
+
+  const updateCoordinates = (newCoords) => {
+    console.log(newCoords);
+    setCoords(newCoords);
+  };
+
   const incrementClicked = () => {
     const newClicked = clicked + 1;
     setClicked(newClicked);
@@ -96,6 +103,10 @@ const ImgContainer = ({ className }) => {
           if (ev.nativeEvent.path[0].tagName === 'IMG') {
             handleSelectionLocation(ev);
           }
+          updateCoordinates({
+            x: ev.nativeEvent.offsetX,
+            y: ev.nativeEvent.offsetY,
+          });
         }
       }}
     >
