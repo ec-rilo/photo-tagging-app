@@ -2,6 +2,7 @@ import { useState } from 'react';
 import styled from 'styled-components';
 import StyledCharSelection from './gamebackground/CharSelection';
 import StyledCrosshair from './gamebackground/Crosshair';
+import { getCharData } from './gamebackground/characterData';
 
 const SelectionContainer = ({
   className,
@@ -10,6 +11,7 @@ const SelectionContainer = ({
   top,
   selectionLocation,
   coords,
+  screenSize,
 }) => {
   const [characters, setCharacters] = useState([
     { name: 'Bowser', isClicked: false },
@@ -19,7 +21,32 @@ const SelectionContainer = ({
     { name: 'Waldo', isClicked: false },
   ]);
 
-  const [selectedChar, setSelectedChar] = useState('');
+  const getDistance = () => {
+    let distance;
+    if (screenSize === 2000) distance = 100;
+    if (screenSize === 1000) distance = 80;
+    if (screenSize === 900) distance = 40;
+
+    return distance;
+  };
+
+  const checkFound = async (charName) => {
+    const charData = await getCharData(screenSize);
+    const charCoords = charData[charName];
+    let distance = getDistance();
+
+    const isInXRange =
+      coords.x > charCoords.x - distance && coords.x < charCoords.x + distance;
+
+    const isInYRange =
+      coords.y > charCoords.y - distance && coords.y < charCoords.y + distance;
+
+    if (isInXRange && isInYRange) {
+      console.log(true);
+    } else {
+      console.log(false);
+    }
+  };
 
   return (
     <div className={className}>
@@ -27,7 +54,7 @@ const SelectionContainer = ({
       <StyledCharSelection
         selectionLocation={selectionLocation}
         characters={characters}
-        setSelectedChar={setSelectedChar}
+        checkFound={checkFound}
       />
     </div>
   );
