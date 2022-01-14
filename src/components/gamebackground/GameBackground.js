@@ -32,6 +32,8 @@ const ImgContainer = ({ className }) => {
 
   const [coords, setCoords] = useState({ x: 0, y: 0 });
 
+  const [screenSize, setScreenSize] = useState(0);
+
   const updateCoordinates = (newCoords) => {
     setCoords(newCoords);
   };
@@ -106,6 +108,7 @@ const ImgContainer = ({ className }) => {
             x: ev.nativeEvent.offsetX,
             y: ev.nativeEvent.offsetY,
           });
+          setScreenSize(ev.target.clientWidth);
         }
       }}
     >
@@ -115,6 +118,7 @@ const ImgContainer = ({ className }) => {
         top={MousePosition.y}
         selectionLocation={selectionLocation}
         coords={coords}
+        screenSize={screenSize}
       />
       <StyledImg src={imgSrc} alt="The Loc Nar Level" />
     </div>
