@@ -1,7 +1,16 @@
 import styled from 'styled-components';
 
 const transitionTime = '250ms ease-in-out';
-const ListItem = styled.li`
+
+const ListItem = ({ className, name }) => {
+  return (
+    <li className={className} onClick={() => console.log(name)}>
+      {name}
+    </li>
+  );
+};
+
+const StyledListItem = styled(ListItem)`
   height: 30px;
   display: flex;
   align-items: center;
@@ -17,14 +26,12 @@ const ListItem = styled.li`
   }
 `;
 
-const CharSelection = ({ className, name1, name2, name3, name4, name5 }) => {
+const CharSelection = ({ className, characters, setSelectedChar }) => {
   return (
     <ul className={className}>
-      <ListItem>{name1}</ListItem>
-      <ListItem>{name2}</ListItem>
-      <ListItem>{name3}</ListItem>
-      <ListItem>{name4}</ListItem>
-      <ListItem>{name5}</ListItem>
+      {characters.map((character, index) => {
+        return <StyledListItem key={index} name={character.name} />;
+      })}
     </ul>
   );
 };
