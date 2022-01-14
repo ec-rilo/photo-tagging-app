@@ -9,6 +9,7 @@ const StyledImg = styled.img`
   display: block;
   user-select: none;
   -webkit-user-drag: none;
+  width: 2000px;
 
   @media ${device.laptop} {
     width: 1000px;
@@ -16,10 +17,6 @@ const StyledImg = styled.img`
 
   @media ${device.mobileL} {
     width: 900px;
-  }
-
-  @media ${device.mobileS} {
-    width: 800px;
   }
 `;
 
